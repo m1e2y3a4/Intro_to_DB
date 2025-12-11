@@ -6,7 +6,6 @@ Script to create the database `alx_book_store` on a MySQL server.
 
 - Creates database alx_book_store
 - Does not fail if database already exists
-- Does not use SELECT or SHOW statements
 - Prints success message on creation
 - Prints error message on failure
 - Properly opens and closes the DB connection

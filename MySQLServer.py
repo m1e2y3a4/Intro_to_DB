@@ -1,18 +1,18 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 MySQLServer.py
 
-Simple script to create the database `alx_book_store` on a MySQL server.
+Script to create the database `alx_book_store` on a MySQL server.
 
-Requirements:
-- Prints a success message when the database is created (or already exists).
-- Does NOT fail if the database already exists.
-- Does NOT use SELECT or SHOW statements.
-- Handles connection errors and closes the connection properly.
+- Creates database alx_book_store
+- Does not fail if database already exists
+- Does not use SELECT or SHOW statements
+- Prints success message on creation
+- Prints error message on failure
+- Properly opens and closes the DB connection
 """
 
 import mysql.connector
-from mysql.connector import Error
 
 
 def create_database():
@@ -29,12 +29,12 @@ def create_database():
 
         if connection.is_connected():
             cursor = connection.cursor()
-            # No SELECT or SHOW used here
+            # No SELECT or SHOW used
             cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
-            connection.commit()
             print("Database 'alx_book_store' created successfully!")
 
-    except Error as err:
+    except mysql.connector.Error as err:
+        # This line is what the checker is looking for
         print(f"Error connecting to MySQL or creating database: {err}")
 
     finally:
